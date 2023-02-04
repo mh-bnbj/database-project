@@ -88,6 +88,49 @@ const server = http.createServer (function(req , res) {
     });
 
   }
+  else if (url.parse(req.url ,true).pathname == "/user/typedProduct"){
+
+
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+        if (body.length > 1e6)
+        req.connection.destroy();
+    });
+    req.on('end', function () {
+        var POST = qs.parse(body);
+        
+        var sql = `call user_get_typed_product_test("${POST.type}")`;
+        con.query(sql, function (err, result) {
+          if (err) throw err;
+          console.log(result);
+          res.writeHead(200, headers);
+          res.write(JSON.stringify(result[0]));
+          return res.end();
+        });
+    });
+  }
+  else if (url.parse(req.url ,true).pathname == "/user/mostSoldProductWeek"){
+    var sql = `call user_get_most_sold_product_week()`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.writeHead(200, headers);
+      res.write(JSON.stringify(result[0]));
+      return res.end();
+    });
+  }
+  else if (url.parse(req.url ,true).pathname == "/user/mostSoldProductMonth"){
+    var sql = `call user_get_most_sold_product_month()`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.writeHead(200, headers);
+      res.write(JSON.stringify(result[0]));
+      return res.end();
+    });
+  }
+
 });
 
 server.listen (port, function (error) {
