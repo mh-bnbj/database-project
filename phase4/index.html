@@ -8,9 +8,411 @@
     <link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
     <script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
     <script src='node_modules/jquery/dist/jquery.min.js'></script>
-    
 </head>
+<style>
+    body {
+        background-image: url("assets/images/indexBackGround.jpeg");
+        background-size: 100vw 100vh;
+    }
+    hr{
+        padding: 0;
+        margin: .5vh;
+    }
+</style>
 <body>
-    
+    <div class="container-fluid">
+        <div class="col-11 " style="height: 92vh; box-shadow: 0 0 8px 2px black; margin: auto ; margin-top:5vh ; border-radius: .5vw ; background-color: rgba(255, 255, 255, 0.8); padding-top: 2vh;">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist" style="justify-content: space-around;
+                      --bs-nav-tabs-border-color: #000000;
+                      --bs-nav-tabs-link-active-border-color: #000000 #000000 #dee2e6;
+                      --bs-nav-tabs-link-active-bg: #ffffff3b;
+                      --bs-nav-tabs-link-hover-border-color: brown brown brown;">
+
+                  <button class="nav-link active" id="nav-1-tab" data-bs-toggle="tab" data-bs-target="#nav-1"
+                    type="button" role="tab" aria-controls="nav-1" aria-selected="true">
+                    لیست محصولات
+                  </button>
+                  <button class="nav-link" id="nav-2-tab" data-bs-toggle="tab" data-bs-target="#nav-2"
+                    type="button" role="tab" aria-controls="nav-2" aria-selected="false">
+                    دسته بندی
+                  </button>
+                  <button class="nav-link" id="nav-3-tab" data-bs-toggle="tab" data-bs-target="#nav-3"
+                    type="button" role="tab" aria-controls="nav-3" aria-selected="false">
+                    پرفروش ترین محصولات
+                  </button>
+                  <button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4"
+                    type="button" role="tab" aria-controls="nav-4" aria-selected="false">
+                    پیشنهادات ویژه
+                  </button>
+                  <button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5"
+                    type="button" role="tab" aria-controls="nav-5" aria-selected="false">
+                    سفارشات آخر
+                  </button>
+                  <button class="nav-link" id="nav-6-tab" data-bs-toggle="tab" data-bs-target="#nav-6"
+                    type="button" role="tab" aria-controls="nav-6" aria-selected="false">
+                    ویرایش اطلاعاتس
+                  </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent" >
+                <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab" >
+                    <div class="d-grid col-3 offset-8 mt-4" style="margin-bottom: 2vh">
+                        <button class="btn btn-primary" onclick="user_get_all_Product()" type="button">
+                          نمایش محصولات موجود
+                        </button>
+
+                    </div>
+                    <div id="user-all-Product-container" style="padding-top: 3vh;padding-bottom: 2vh; box-shadow: 0 0 8px 2px gray ; border-radius: 1vw 0 0 1vw;background-color: rgba(255, 255, 255,.3); width: 98%;margin: auto;display: flex;flex-wrap: wrap;justify-content: space-around;align-items: baseline;overflow-y: scroll;max-height: 68vh;">
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 21%; margin-bottom: 5vh;">
+                            <div class="col-12 text-center pt-1 pb-3">
+                                <div class="col-12 pt-2">
+                                    id : <span class="">12</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">نوشابه</span> : نام
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">عدد</span> : واحد
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ تولید : <br><span>2022/11/1 12:20:00</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    تاریخ انقضا : <br><span class="">-</span>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">15%</span> : تخفیف
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <span class="">drink</span> : دسته بندی
+                                </div>
+                                <div class="col-12 pt-2">
+                                    قیمت فروش : <span class="">2500 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav-2-tab">
+                  nav-2
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+        function user_get_all_Product(){
+
+            $("#user-all-Product-container").empty();
+            $.ajax({
+                url: `http://localhost:5000/user/allProduct`,
+                method: "GET",
+
+                success: function (products) {
+                    
+                    console.log(JSON.parse(products));
+                    JSON.parse(products).forEach(data => {
+                        var card=`<div class="nav-1-item" style="box-shadow: 0 0 8px 2px rgb(104, 0, 136);background-color: rgba(204, 125, 228 , .7); border-radius: 3vw;width: 22%; margin-bottom: 5vh;">
+                                    <div class="col-12 text-center pt-1 pb-3">
+                                        <div class="col-12 pt-2">
+                                            id : <span class="">${data.id}</span>
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            <span class="">${data.name}</span> : نام
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            <span class="">${data.unit}</span> : واحد
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            تاریخ تولید : <br><span>${data.manDate}</span>
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            تاریخ انقضا : <br><span class="">${data.exDate}</span>
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            <span class="">${data.discount}%</span> : تخفیف
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            <span class="">${data.type}</span> : دسته بندی
+                                        </div>
+                                        <hr>
+                                        <div class="col-12 pt-2">
+                                            قیمت فروش : <span class="">${data.price} تومان</span>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                            $("#user-all-Product-container").append($(card));
+                        
+                    });
+
+                },
+
+                error: function (error) {
+                },
+            });
+        }
+    </script>
 </body>
 </html>

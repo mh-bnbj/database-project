@@ -76,6 +76,18 @@ const server = http.createServer (function(req , res) {
         });
     });
   }
+  else if (url.parse(req.url ,true).pathname == "/user/allProduct"){
+
+    var sql = `call user_get_all_Product_test()`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log(result[0][0]);
+      res.writeHead(200, headers);
+      res.write(JSON.stringify(result[0]));
+      return res.end();
+    });
+
+  }
 });
 
 server.listen (port, function (error) {
