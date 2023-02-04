@@ -31,7 +31,7 @@ var con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  var sql = "SELECT * from customer";
+  var sql = "call insert_customer(5 , 'ali' , 'rezai' , 'vip' , 'mashad')";
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log(result);
