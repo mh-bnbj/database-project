@@ -130,6 +130,18 @@ const server = http.createServer (function(req , res) {
       return res.end();
     });
   }
+  else if (url.parse(req.url ,true).pathname == "/user/allOffProduct"){
+
+    var sql = `call user_get_all_off_Product_test()`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log(result[0][0]);
+      res.writeHead(200, headers);
+      res.write(JSON.stringify(result[0]));
+      return res.end();
+    });
+
+  }
 
 });
 
