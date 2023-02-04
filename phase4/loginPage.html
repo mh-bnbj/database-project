@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<style>
+  body {
+    background-image: url("assets/images/login-background.avif");
+    background-size: 100vw 100vh;
+  }
+
+  #main-content-container>div {
+    margin-top: 10vh;
+    padding: 2vh 2vw;
+    box-shadow: 0 0 8px 2px gray;
+    border-radius: 0.5vw;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+</style>
+
+<body>
+  <div class="container" id="main-content-container">
+    <div class="col-6">
+      <nav style="margin-top: 2vh">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist" style="
+              justify-content: space-around;
+              --bs-nav-tabs-border-color: #000000;
+              --bs-nav-tabs-link-active-border-color: #000000 #000000 #6c757d00;
+              --bs-nav-tabs-link-active-bg: #ffffff3b;
+            ">
+          <button class="nav-link active col-4" id="nav-signIn-tab" data-bs-toggle="tab" data-bs-target="#nav-signIn"
+            type="button" role="tab" aria-controls="nav-signIn" aria-selected="true">
+            login
+          </button>
+          <button class="nav-link col-4" id="nav-signUp-tab" data-bs-toggle="tab" data-bs-target="#nav-signUp"
+            type="button" role="tab" aria-controls="nav-signUp" aria-selected="false">
+            creat account
+          </button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-signIn" role="tabpanel" aria-labelledby="nav-signIn-tab">
+          <div class="form-floating mb-4 col-10 offset-1" style="margin-top: 5vh">
+            <input type="number" class="form-control" id="si-nationalId" placeholder="0925227382" />
+            <label for="si-nationalId">National Id</label>
+            <div class="invalid-feedback">
+              this customer doesn't exist 
+            </div>
+          </div>
+          <div class="form-floating col-10 offset-1">
+            <input type="password" class="form-control" id="si-password" placeholder="Password" />
+            <label for="si-password">Password</label>
+            <div class="invalid-feedback">
+              password does not match
+            </div>
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-3">
+            <button class="btn btn-primary" onclick="login()" type="button">
+              Login
+            </button>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-signUp" role="tabpanel" aria-labelledby="nav-signUp-tab">
+          <div class="form-floating mb-2 col-10 offset-1" style="margin-top: 5vh">
+            <input type="number" class="form-control" id="so-nationalId" placeholder="0925227382" />
+            <label for="so-nationalId">National Id</label>
+          </div>
+
+          <div class="form-floating mb-2 col-10 offset-1">
+            <input type="text" class="form-control" id="so-firstName" placeholder="firstname" />
+            <label for="so-firstName">first name</label>
+          </div>
+
+          <div class="form-floating mb-2 col-10 offset-1">
+            <input type="text" class="form-control" id="so-lastName" placeholder="lastName" />
+            <label for="so-lastName">last name</label>
+          </div>
+
+          <div class="form-floating mb-2 col-10 offset-1">
+            <input type="text" class="form-control" id="so-city" placeholder="city" />
+            <label for="so-city">city</label>
+          </div>
+
+          <div class="form-floating mb-2 col-10 offset-1">
+            <input type="password" class="form-control" id="so-password" placeholder="Password" />
+            <label for="so-password">Password</label>
+          </div>
+
+          <div class="d-grid gap-2 col-6 mx-auto mt-4" style="margin-bottom: 2vh">
+            <button class="btn btn-primary" onclick="creat_account()" type="button">
+              creat account
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      $("#si-nationalId").removeClass("is-invalid");
+      $("#si-password").removeClass("is-invalid");
+      $.ajax({
+        url: `http://localhost:5000/creatAccount`,
+        method: "POST",
+        data:{
+          "NationalId": $("#si-nationalId").val(),
+          "password": $("#si-password").val()
+        },
+
+        success: function (data) {
+          if(data == "true$true"){
+            window.location.replace(`file:///C:/Users/Vision%20LAPTOP/Documents/GitHub/database-project/phase4/index.html?NationalId=${$("#si-nationalId").val()}`);
+          }
+          else if(data == "true$false"){
+            $("#si-password").addClass("is-invalid");
+          }
+          else{
+            $("#si-nationalId").addClass("is-invalid");
+            $("#si-password").addClass("is-invalid");
+          }
+
+        },
+
+        error: function (error) {
+        },
+      });
+
+    }
+
+    function creat_account() {
+      $.ajax({
+        url: `http://localhost:5000/login`,
+        method: "POST",
+        data:{
+          "NationalId": $("#so-nationalId").val(),
+          "firstName": $("#so-firstName").val(),
+          "type": "normal",
+          "lastName": $("#so-lastName").val(),
+          "city": $("#so-city").val(),
+          "password": $("#so-password").val()
+        },
+
+        success: function (rawData) {
+          var parsedData = JSON.parse(rawData);
+          console.log(parsedData);
+
+        },
+
+        error: function (error) {
+        },
+      });
+    }
+  </script>
+</body>
+
+</html>
