@@ -21,11 +21,11 @@
 </style>
 <body>
     <div class="container-fluid">
-        <div class="col-11 " style="height: 92vh; box-shadow: 0 0 8px 2px black; margin: auto ; margin-top:5vh ; border-radius: .5vw ; background-color: rgba(255, 255, 255, 0.8); padding-top: 2vh;">
+        <div class="col-11 " style="height: 92vh; box-shadow: 0 0 8px 2px black; margin: auto ; margin-top:5vh ; border-radius: .5vw ; background-color: rgba(255, 255, 255, 0.7); padding-top: 2vh;">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist" style="justify-content: space-around;
                       --bs-nav-tabs-border-color: #000000;
-                      --bs-nav-tabs-link-active-border-color: #000000 #000000 #dee2e6;
+                      --bs-nav-tabs-link-active-border-color: #000000 #000000 #dee2e6e8;
                       --bs-nav-tabs-link-active-bg: #ffffff3b;
                       --bs-nav-tabs-link-hover-border-color: brown brown brown;">
 
@@ -1126,13 +1126,39 @@
                 </div>
 
                 <div class="tab-pane fade" id="nav-6" role="tabpanel" aria-labelledby="nav-6-tab">
-                    nav-6
+                    <div class="form-floating mb-4 col-6 offset-3" style="margin-top: 10vh;">
+                        <input type="text" class="form-control" id="so-firstName" placeholder="firstname" />
+                        <label for="so-firstName">first name</label>
+                      </div>
+            
+                      <div class="form-floating mb-4 col-6 offset-3">
+                        <input type="text" class="form-control" id="so-lastName" placeholder="lastName" />
+                        <label for="so-lastName">last name</label>
+                      </div>
+            
+                      <div class="form-floating mb-4 col-6 offset-3">
+                        <input type="text" class="form-control" id="so-city" placeholder="city" />
+                        <label for="so-city">city</label>
+                      </div>
+            
+                      <div class="form-floating mb-5 col-6 offset-3">
+                        <input type="password" class="form-control" id="so-password" placeholder="Password" />
+                        <label for="so-password">Password</label>
+                      </div>
+            
+                      <div class="d-grid gap-2 col-4 mx-auto mt-5" style="margin-bottom: 2vh">
+                        <button class="btn btn-primary" onclick="update_user_account()" type="button">
+                          ثبت اطلاعات
+                        </button>
+                      </div>
                 </div>
             </div>
         </div>
         
     </div>
     <script>
+
+        var user_national_id;
 
         function user_get_all_Product(){
 
@@ -1393,6 +1419,52 @@
             });
         }
 
+        
+        function update_user_account(){
+            $.ajax({
+                url: `http://localhost:5000/user/updateAccount`,
+                method: "POST",
+                data:{
+                    "NationalId": user_national_id,
+                    "fN": $("#so-firstName").val(),
+                    "lN": $("#so-lastName").val(),
+                    "city": $("#so-city").val(),
+                    "pass": $("#so-password").val()
+                },
+
+                success: function (rawData) {
+                    console.log(rawData);
+                },
+                error: function (error) {
+                },
+            });
+        }
+
+        $(document).ready(function() {
+            user_national_id = (new URL(window.location.href)).searchParams.get("NationalId");
+
+            $.ajax({
+                url: `http://localhost:5000/user/getAccount`,
+                method: "POST",
+                data:{
+                "NationalId": user_national_id,
+                },
+
+                success: function (rawData) {
+                    console.log(rawData);
+                    var data = JSON.parse(rawData);
+                    $("#so-firstName").val(data.fname);
+                    $("#so-lastName").val(data.lname);
+                    $("#so-city").val(data.city);
+                    $("#so-password").val(data.password);
+                },
+                error: function (error) {
+                },
+            });
+        });
+    
+    
+    
     </script>
 </body>
 </html>

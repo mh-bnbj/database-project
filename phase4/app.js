@@ -142,6 +142,66 @@ const server = http.createServer (function(req , res) {
     });
 
   }
+  else if (url.parse(req.url ,true).pathname == "/user/lastBuy"){
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+        if (body.length > 1e6)
+        req.connection.destroy();
+    });
+    req.on('end', function () {
+        var POST = qs.parse(body);
+        
+        var sql = `call user_get_last_buy(${POST.NationalId})`;
+        con.query(sql, function (err, result) {
+          if (err) throw err;
+          console.log(result);
+          res.writeHead(200, headers);
+          res.write(JSON.stringify(result[0]));
+          return res.end();
+        });
+    });
+  }
+  else if (url.parse(req.url ,true).pathname == "/user/getAccount"){
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+        if (body.length > 1e6)
+        req.connection.destroy();
+    });
+    req.on('end', function () {
+        var POST = qs.parse(body);
+        
+        var sql = `call user_get_customer(${POST.NationalId})`;
+        con.query(sql, function (err, result) {
+          if (err) throw err;
+          console.log(result);
+          res.writeHead(200, headers);
+          res.write(JSON.stringify(result[0][0]));
+          return res.end();
+        });
+    });
+  }
+  else if (url.parse(req.url ,true).pathname == "/user/updateAccount"){
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+        if (body.length > 1e6)
+        req.connection.destroy();
+    });
+    req.on('end', function () {
+        var POST = qs.parse(body);
+        
+        var sql = `call user_set_customer(${POST.NationalId} , "${POST.fN}" , "${POST.lN}" , "${POST.city}" , "${POST.pass}")`;
+        con.query(sql, function (err, result) {
+          if (err) throw err;
+          console.log(result);
+          res.writeHead(200, headers);
+          res.write("DONE");
+          return res.end();
+        });
+    });
+  }
 
 });
 
